@@ -1,7 +1,7 @@
 import random
 
 # Обозначаются наборы всех символов, которые могут быть зашифрованы в данной программе
-russian_alphabet = "абвгдеёжзиклмнопрстуфхцчшщъыьэюя"
+russian_alphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
 numbers = '1234567890'
 special_symbols = " ,."
 chars = list(russian_alphabet + numbers + special_symbols)
@@ -22,7 +22,8 @@ def encode(text, gamma):
     for i in range(len(text)):
         # Если пользователь ввел символ, не обозначенные ранее - возвращается ошибка
         if text[i] not in chars:
-            raise Exception("Вы ввели символ, который невозможно закодировать данной программой!")
+            message = f"Вы ввели символ '{text[i]}', который невозможно закодировать данной программой!"
+            raise Exception(message)
         # Считается порядковый номер в алфавите для каждого символа из текста и гаммы
         index_text = chars.index(text[i])
         index_gamma = chars.index(gamma[i])
